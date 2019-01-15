@@ -21,7 +21,7 @@ public class UserResource {
     private SignUpUser signUpUser;
 
     @RequestMapping(method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> signUpUser(@RequestBody UserRepresentation userRepresentation) {
+    public ResponseEntity<String> signUpUser(@RequestBody UserRepresentation userRepresentation) throws Exception {
         return new ResponseEntity<>(signUpUser.signUp(userRepresentation.toDomainSignUpUser()), HttpStatus.OK);
     }
 
