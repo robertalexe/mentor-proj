@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="page-header">
+        <h1>SignUp Form</h1>      
+      </div>
+  <form (ngSubmit)="onSignUpUser()" [formGroup]="userForm">
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" formControlName="email">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-5">
+            <label for="inputContactNo">Contact Number</label>
+            <input type="text" class="form-control" id="inputContactNo" placeholder="Enter password" formControlName="contactNo">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputUsername">Username</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" formControlName="username">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-5">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Enter password" formControlName="password">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label for="inputFirstname">First Name</label>
+            <input type="text" class="form-control" id="inputFirstname" placeholder="Enter first name" formControlName="firstName">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-5">
+            <label for="inputLastname">Last Name</label>
+            <input type="text" class="form-control" id="inputLastname" placeholder="Enter last name" formControlName="lastName">
+        </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary center-block" onclick="">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
