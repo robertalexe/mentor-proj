@@ -1,8 +1,10 @@
 package com.robert.mentor.domain.user;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 public interface Users {
 
     User signUp(User user);
+    List<User> findAll();
+    User findOne(String username);
 }

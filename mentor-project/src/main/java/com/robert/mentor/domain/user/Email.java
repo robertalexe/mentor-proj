@@ -1,4 +1,4 @@
-package com.robert.mentor.domain.valueobjects;
+package com.robert.mentor.domain.user;
 
 import com.robert.mentor.domain.Validable;
 

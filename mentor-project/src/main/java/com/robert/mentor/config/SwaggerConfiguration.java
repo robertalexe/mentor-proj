@@ -17,7 +17,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(ApiInfo.DEFAULT)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.robert.mentor.exposition.user"))
+                .apis(RequestHandlerSelectors.basePackage("com.robert.mentor.exposition"))
                 .build();
     }
 }

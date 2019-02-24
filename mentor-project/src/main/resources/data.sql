@@ -1,1 +1,3 @@
 INSERT INTO APP_USERS (ID, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME, CONTACT_NO, REG_DATE, REG_CODE, ACTIVE) VALUES ('ABC@ABC.COM', 'A', 'B', 'C', 'D', 'E', NULL, 'CODE', 1);
+INSERT INTO TRAININGS (ID, NAME, COST) values  ('asdjkal-fdfs', 'First Training', 44);
+INSERT INTO TRAININGS (ID, NAME, COST) values  ('asdjkal-fdfd', 'Second Training', 500);
