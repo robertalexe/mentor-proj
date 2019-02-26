@@ -16,14 +16,10 @@ public class UserRepresentation {
     public String registeredDate;
 
     public User toDomain() {
-        return new User(id, userName, password, firstName,
-                lastName, contactNumber, parseDate(registeredDate)
-        );
+        return null;
     }
 
     public User toDomainSignUpUser() {
-        return new User(id, userName, password, firstName,
-                lastName, contactNumber, now()
-        );
+        return null;
     }
 }

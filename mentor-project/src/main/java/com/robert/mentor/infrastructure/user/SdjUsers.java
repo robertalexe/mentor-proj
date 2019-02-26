@@ -37,7 +37,7 @@ public class SdjUsers implements Users, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = usersSdj.findById(username).orElseThrow( () -> new UsernameNotFoundException("Invalid username or password"));
-        return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(), getAuthority());
+        return new org.springframework.security.core.userdetails.User(user.getId().getValue(), user.getPassword().getPassword(), getAuthority());
     }
 
     private List<SimpleGrantedAuthority> getAuthority() {

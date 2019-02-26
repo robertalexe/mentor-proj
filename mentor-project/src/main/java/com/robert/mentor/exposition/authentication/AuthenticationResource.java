@@ -26,6 +26,6 @@ public class AuthenticationResource {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.username, loginUser.password));
         User user = users.findOne(loginUser.username);
         String token = jwtTokenUtil.generateToken(user);
-        return new AuthToken(token, user.getId());
+        return new AuthToken(token, user.getId().getValue());
     }
 }

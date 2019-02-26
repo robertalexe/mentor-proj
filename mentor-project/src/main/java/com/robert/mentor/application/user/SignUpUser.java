@@ -22,6 +22,6 @@ public class SignUpUser {
         user.setRegisteredCode(registrationCodeGenerator.generateSignUpCode());
         user.setActive(true);
         verificationCodeSender.sendVerificationCodeTo(user);
-        return users.signUp(user).getId();
+        return users.signUp(user).getId().getValue();
     }
 }

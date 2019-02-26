@@ -1,13 +1,18 @@
 package com.robert.mentor.domain.admin;
 
+import com.robert.mentor.domain.DDD;
 import com.robert.mentor.domain.user.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+@DDD.AggregateRoot
+@Entity
+@DiscriminatorValue("ADMIN")
+@NoArgsConstructor
+@Getter
 public class Admin extends User {
-
-    public Admin(String id, String userName, String password, String firstName, String lastName, String contactNumber, LocalDateTime registeredDate, String registeredCode, boolean active) {
-        super(id, userName, password, firstName, lastName, contactNumber, registeredDate, registeredCode, active);
-    }
 
 }

@@ -45,7 +45,7 @@ public class GmailVerificationCodeSender implements VerificationCodeSender {
     private MimeMessage generateMimeMessage(User user) throws AddressException, MessagingException {
         session = Session.getDefaultInstance(gmailProperties);
         MimeMessage mimeMessage = new MimeMessage(session);
-        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getId()));
+        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getId().getValue()));
         mimeMessage.setSubject("Generated code");
         String body = "The code that has been generated for your account is: " + user.getRegisteredCode();
         mimeMessage.setContent(body, "text/html");
