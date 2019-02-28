@@ -34,7 +34,7 @@ public class User {
     private String registeredCode;
     @Column(name = "ACTIVE")
     private boolean active;
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private UserType userType;
 
     public User(Email id, Password password, NameFragment firstName, NameFragment lastName, ContactNumber contactNumber, LocalDateTime registeredDate, String registeredCode, boolean active) {

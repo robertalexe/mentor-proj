@@ -48,4 +48,9 @@ public class Password extends BaseValueObject<Password> {
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
     }
+
+    private Password() {
+        super(Password.class);
+        this.password = null;
+    }
 }

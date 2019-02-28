@@ -48,4 +48,9 @@ public class ContactNumber extends BaseValueObject<ContactNumber> {
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
     }
+
+    private ContactNumber() {
+        super(ContactNumber.class);
+        this.value = null;
+    }
 }

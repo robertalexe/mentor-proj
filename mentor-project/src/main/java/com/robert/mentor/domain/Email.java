@@ -1,6 +1,7 @@
 package com.robert.mentor.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -47,5 +48,10 @@ public class Email extends BaseValueObject<Email> implements Serializable {
         String message() default "Business rules for Email are not respected or missing";
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
+    }
+
+    private Email() {
+        super(Email.class);
+        this.value = null;
     }
 }

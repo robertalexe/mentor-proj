@@ -5,20 +5,33 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupUserComponent } from './signup-user/signup-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { TrainingsListComponent } from './trainings-list/trainings-list.component';
-import {MatNativeDateModule} from "@angular/material";
+import {
+  DialogOverviewExampleDialog,
+  SnackbarProposalComponent,
+  TrainingsListComponent
+} from './trainings-list/trainings-list.component';
+import {MatDialogModule, MatNativeDateModule} from "@angular/material";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
 import { HomepageComponent } from './homepage/homepage.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptor} from './_helper/jwt.interceptor';
 import {ErrorInterceptor} from "./_helper/error.interceptor";
-import {fakeBackendProvider} from "./_helper/fake-backend";
 import {AuthGuard} from "./_guards/auth.guard";
+import { UserHomepageComponent } from './user-homepage/user-homepage.component';
+import { MentorHomepageComponent } from './mentor-homepage/mentor-homepage.component';
+import {RoleGuard} from "./_guards/role.guard";
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { UserActiveTrainingsComponent } from './user-active-trainings/user-active-trainings.component';
+import { MentorProposalsComponent } from './mentor-proposals/mentor-proposals.component';
+import { MentorDetailsComponent } from './mentor-details/mentor-details.component';
+import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
+import { TechnologiesListComponent } from './technologies-list/technologies-list.component';
+import { SignupMentorComponent } from './signup-mentor/signup-mentor.component';
 
 const appRoutes: Routes = [
   {
@@ -31,14 +44,31 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'signup',
-    component: SignupComponent,
-    canActivate: [AuthGuard]
+    path: 'signup-user',
+    component: SignupUserComponent
   },
   {
-    path: 'trainings-list',
-    component: TrainingsListComponent,
-    canActivate: [AuthGuard]
+    path: 'signup-mentor',
+    component: SignupMentorComponent
+  },
+  {
+    path: 'user-homepage',
+    component: UserHomepageComponent,
+    canActivate: [AuthGuard, RoleGuard]
+  },
+  {
+    path: 'mentor-homepage',
+    component: MentorHomepageComponent,
+    canActivate: [AuthGuard, RoleGuard]
+  },
+  {
+    path: 'admin-homepage',
+    component: AdminHomepageComponent,
+    canActivate: [AuthGuard, RoleGuard]
+  },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent
   },
   {
     path: '**', redirectTo: ''
@@ -48,11 +78,22 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
+    SignupUserComponent,
     TrainingsListComponent,
+    DialogOverviewExampleDialog,
     HomepageComponent,
     UsersListComponent,
-    LoginComponent
+    LoginComponent,
+    UserHomepageComponent,
+    MentorHomepageComponent,
+    ForbiddenComponent,
+    UserActiveTrainingsComponent,
+    MentorProposalsComponent,
+    SnackbarProposalComponent,
+    MentorDetailsComponent,
+    AdminHomepageComponent,
+    TechnologiesListComponent,
+    SignupMentorComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -60,20 +101,22 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog,
+    SnackbarProposalComponent
   ],
   providers: [
     HttpClient,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

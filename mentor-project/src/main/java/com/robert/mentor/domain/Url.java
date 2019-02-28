@@ -47,4 +47,9 @@ public class Url extends BaseValueObject<Url> {
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
     }
+
+    private Url() {
+        super(Url.class);
+        this.value = null;
+    }
 }

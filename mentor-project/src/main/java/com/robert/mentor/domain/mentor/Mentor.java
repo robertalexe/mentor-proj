@@ -1,8 +1,6 @@
 package com.robert.mentor.domain.mentor;
 
-import com.robert.mentor.domain.DDD;
-import com.robert.mentor.domain.Technology;
-import com.robert.mentor.domain.Url;
+import com.robert.mentor.domain.*;
 import com.robert.mentor.domain.training.Training;
 import com.robert.mentor.domain.user.User;
 import com.robert.mentor.infrastructure.ZoneIdConverter;
@@ -10,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +18,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 public class Mentor extends User {
+
+    public Mentor(Email id, Password password, NameFragment firstName, NameFragment lastName,
+                  ContactNumber contactNumber, LocalDateTime registeredDate, ZoneId timeZone,
+                  WorkingTimes workingTimes, Set<Technology> technologies, Url linkedInUrl,
+                  int yearsOfExperience, List<Training> trainings) {
+        super(id, password, firstName, lastName, contactNumber, registeredDate);
+        this.timeZone = timeZone;
+        this.workingTimes = workingTimes;
+        this.technologies = technologies;
+        this.linkedInUrl = linkedInUrl;
+        this.yearsOfExperience = yearsOfExperience;
+        this.trainings = trainings;
+    }
 
     @Convert(converter = ZoneIdConverter.class)
     @Column(name = "ZONE_ID")

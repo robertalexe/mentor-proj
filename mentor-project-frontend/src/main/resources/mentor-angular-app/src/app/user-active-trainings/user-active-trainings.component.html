@@ -1,0 +1,27 @@
+<div class="mat-app-background basic-container" class="mat-elevation-z8">
+
+  <table mat-table [dataSource]="activeTrainingsArray">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef >Id</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Training Name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cost">
+      <th mat-header-cell *matHeaderCellDef>Training Cost</th>
+      <td mat-cell *matCellDef="let element">{{element.cost}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>

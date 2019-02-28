@@ -52,7 +52,16 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          console.log(data.userType);
+          if(data.userType === 'USER') {
+            this.router.navigate(['/user-homepage']);
+          }
+          if(data.userType === 'MENTOR') {
+            this.router.navigate(['/mentor-homepage'])
+          }
+          if(data.userType === 'ADMIN') {
+            this.router.navigate(['/admin-homepage'])
+          }
         },
         error => {
           this.error = error;

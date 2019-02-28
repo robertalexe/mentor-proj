@@ -1,21 +1,17 @@
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-  <div class="topnav-right">
-    <a class="nav-item nav-link" routerLink="/">{{currentUser.username}}</a>
-  </div>
-</nav>
+<mat-toolbar color="primary" *ngIf="currentUser">
+  <span>
+    <img src="assets/img/apps.svg" class="angular-logo">
+    Mentor Application
+  </span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Home</button>
+  <button mat-button (click)="logout()">Logout</button>
+  <button class="current-user" mat-button>{{currentUser.username}} ({{currentUser.userType}})</button>
+</mat-toolbar>
 
-<!-- main app container -->
-<div class="jumbotron">
+
+<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

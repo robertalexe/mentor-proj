@@ -3,6 +3,7 @@ package com.robert.mentor.domain.mentor;
 import com.robert.mentor.domain.BaseValueObject;
 import com.robert.mentor.domain.DDD;
 import lombok.Getter;
+import org.hibernate.jdbc.Work;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -32,5 +33,11 @@ public class WorkingHours extends BaseValueObject<WorkingHours> {
     @Override
     public List<Object> attributesContainedInValueObject() {
         return asList(from, to);
+    }
+
+    private WorkingHours() {
+        super(WorkingHours.class);
+        this.from = null;
+        this.to = null;
     }
 }

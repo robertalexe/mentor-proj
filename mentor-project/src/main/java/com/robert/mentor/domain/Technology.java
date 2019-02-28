@@ -49,4 +49,9 @@ public class Technology extends BaseValueObject<Technology> {
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
     }
+
+    private Technology() {
+        super(Technology.class);
+        this.technology = null;
+    }
 }

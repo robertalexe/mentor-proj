@@ -42,6 +42,10 @@ public class UserType extends BaseValueObject<UserType> {
         String message() default "Business rules for Email are not respected or missing";
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
+    }
 
+    private UserType() {
+        super(UserType.class);
+        this.value = null;
     }
 }

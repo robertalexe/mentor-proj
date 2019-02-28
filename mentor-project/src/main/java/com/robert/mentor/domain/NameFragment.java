@@ -48,4 +48,9 @@ public class NameFragment extends BaseValueObject<NameFragment> {
         Class<?>[] groups() default {};
         Class<? extends Payload>[] payload() default {};
     }
+
+    private NameFragment() {
+        super(NameFragment.class);
+        this.value = null;
+    }
 }

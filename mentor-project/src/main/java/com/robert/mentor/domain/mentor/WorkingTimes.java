@@ -37,4 +37,9 @@ public class WorkingTimes extends BaseValueObject<WorkingTimes> {
     public String toString() {
         return format("%s{workingTimesData=%s}", getClass().getSimpleName(), this.workingTimesData);
     }
+
+    private WorkingTimes() {
+        super(WorkingTimes.class);
+        this.workingTimesData = null;
+    }
 }
