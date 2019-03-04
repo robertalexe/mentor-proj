@@ -11,15 +11,14 @@ import {
 } from "@angular/material";
 
 export interface TrainingElement {
-  id: string;
-  name: string;
-  cost: string;
+  mentorEmail: string;
+  mentorFullName: string;
+  technologiesList: string;
+  yearsOfExperience: number;
+  trainingName: string;
+  trainingCost: string;
+  enrolledUsers: string;
 }
-
-const ELEMENT_DATA: TrainingElement[] = [
-  {id: '1', name: 'Hydrogen', cost: '24'},
-  {id: '2', name: 'KKt', cost: '500'},
-];
 
 export interface DialogData {
   animal: string;
@@ -33,7 +32,7 @@ export interface DialogData {
 })
 export class TrainingsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'cost', 'propose', 'showDetails'];
+  displayedColumns: string[] = ['mentor-name', 'technologies', 'training-name', 'training-cost', 'propose', 'showDetails'];
   trainingsArray: MatTableDataSource<TrainingElement>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -42,7 +41,7 @@ export class TrainingsListComponent implements OnInit {
   constructor(private http: HttpClient, private dialog: MatDialog, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.http.get<TrainingElement[]>('http://localhost:8080/api/trainings').subscribe( (elem) => {
+    this.http.get<TrainingElement[]>('http://localhost:8080/api/mentors-trainings').subscribe( (elem) => {
       this.trainingsArray = new MatTableDataSource(elem);
       this.trainingsArray.paginator = this.paginator;
       this.trainingsArray.sort = this.sort;
@@ -56,7 +55,7 @@ export class TrainingsListComponent implements OnInit {
   openTrainingDetails(element: any): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
-      data: {name: 'aaa', animal: 'vvv'}
+      data: {actualTraining: element}
     });
     console.log(element);
   }

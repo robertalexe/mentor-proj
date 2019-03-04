@@ -54,4 +54,8 @@ public class Technology extends BaseValueObject<Technology> {
         super(Technology.class);
         this.technology = null;
     }
+
+    public String getTechnology() {
+        return technology;
+    }
 }

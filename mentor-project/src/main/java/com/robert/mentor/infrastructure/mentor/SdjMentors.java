@@ -7,7 +7,10 @@ import com.robert.mentor.domain.mentor.Mentors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @DDD.RepositoryImpl
 @Service
@@ -17,13 +20,13 @@ public class SdjMentors implements Mentors {
     private MentorsSdj sdj;
 
     @Override
-    public Mentor findOne(Email username) {
-        return sdj.getOne(username);
+    public Optional<Mentor> findOne(Email username) {
+        return Optional.of(sdj.getOne(username));
     }
 
     @Override
-    public List<Mentor> findAll() {
-        return sdj.findAll();
+    public Set<Mentor> findAll() {
+        return new HashSet<>(sdj.findAll());
     }
 
     @Override

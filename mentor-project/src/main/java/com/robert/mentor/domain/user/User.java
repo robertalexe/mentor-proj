@@ -52,4 +52,39 @@ public class User {
         this(id, password, firstName, lastName, contactNumber, registeredDate, null, false);
     }
 
+    public Email getId() {
+        return id;
+    }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public NameFragment getFirstName() {
+        return firstName;
+    }
+
+    public NameFragment getLastName() {
+        return lastName;
+    }
+
+    public ContactNumber getContactNumber() {
+        return contactNumber;
+    }
+
+    public LocalDateTime getRegisteredDate() {
+        return registeredDate;
+    }
+
+    public String getRegisteredCode() {
+        return registeredCode;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
 }

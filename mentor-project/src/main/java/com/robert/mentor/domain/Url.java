@@ -36,6 +36,10 @@ public class Url extends BaseValueObject<Url> {
         return format("%s{value=%s}", getClass().getSimpleName(), this.value);
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Documented
     @Target({ElementType.FIELD})
     @Retention(RetentionPolicy.RUNTIME)

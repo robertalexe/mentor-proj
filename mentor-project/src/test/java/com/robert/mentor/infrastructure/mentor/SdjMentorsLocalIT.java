@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.time.LocalDateTime;
@@ -32,7 +33,7 @@ public class SdjMentorsLocalIT {
 
     @Test
     public void should_retrieve_existing_mentor() {
-        Mentor mentor = mentors.findOne(new Email("ABD@ABC.COM"));
+        Mentor mentor = mentors.findOne(new Email("ABD@ABC.COM")).orElseThrow(() -> new UsernameNotFoundException("mentor"));
         assertThat(mentor).isNotNull();
     }
 

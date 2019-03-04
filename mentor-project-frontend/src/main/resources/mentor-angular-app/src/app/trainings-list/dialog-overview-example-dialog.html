@@ -1,8 +1,11 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title>{{data.actualTraining.trainingName}}</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+  <p>Training Cost: {{data.actualTraining.trainingCost}}</p>
+  <p>Mentor Name: {{data.actualTraining.mentorFullName}}</p>
+  <p>Mentor Email: {{data.actualTraining.mentorEmail}}</p>
+  <p>Years of Experience: {{data.actualTraining.yearsOfExperience}}</p>
+  <p>Technologies List: {{data.actualTraining.technologiesList}}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Close</button>
 </div>

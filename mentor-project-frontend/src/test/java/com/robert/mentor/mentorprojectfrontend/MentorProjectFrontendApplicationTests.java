@@ -1,4 +1,4 @@
-package com.robert.mentor.front.mentorprojectfrontend;
+package com.robert.mentor.mentorprojectfrontend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,4 +14,3 @@ public class MentorProjectFrontendApplicationTests {
 	}
 
 }
-

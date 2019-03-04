@@ -38,6 +38,10 @@ public class Email extends BaseValueObject<Email> implements Serializable {
         return format("%s{value=%s}", getClass().getSimpleName(), this.value);
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Documented
     @Target({ElementType.FIELD})
     @Retention(RetentionPolicy.RUNTIME)

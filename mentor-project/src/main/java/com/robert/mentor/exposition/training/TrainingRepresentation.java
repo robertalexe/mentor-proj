@@ -4,16 +4,15 @@ import com.robert.mentor.domain.training.Training;
 
 public class TrainingRepresentation {
 
-    public String id;
-    public String name;
-    public String cost;
+    public String mentorFullName;
+    public String trainingName;
+    public String trainingCost;
 
     public static TrainingRepresentation toTrainingRepresentation(Training training) {
         TrainingRepresentation trainingRepresentation = new TrainingRepresentation();
-        trainingRepresentation.id = training.getId().getValue();
-        trainingRepresentation.name = training.getTrainingName();
-        trainingRepresentation.cost = training.getCost().toString();
+        trainingRepresentation.mentorFullName = training.getMentorId().getValue();
+        trainingRepresentation.trainingName = training.getTrainingName();
+        trainingRepresentation.trainingCost = training.getCost().toPlainString();
         return trainingRepresentation;
     }
-
 }

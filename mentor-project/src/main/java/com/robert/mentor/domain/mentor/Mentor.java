@@ -48,4 +48,32 @@ public class Mentor extends User {
     @JoinColumn(name = "MENTOR_ID")
     private List<Training> trainings;
 
+    public ZoneId getTimeZone() {
+        return timeZone;
+    }
+
+    public WorkingTimes getWorkingTimes() {
+        return workingTimes;
+    }
+
+    public Set<Technology> getTechnologies() {
+        return technologies;
+    }
+
+    public Url getLinkedInUrl() {
+        return linkedInUrl;
+    }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public List<Training> getTrainings() {
+        return trainings;
+    }
+
+    public static void main(String[] args) {
+        ZoneId zoneId = ZoneId.of("America/Anchorage");
+        System.out.println(zoneId.toString());
+    }
 }

@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UserActiveTrainingsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'cost'];
+  displayedColumns: string[] = ['mentor-name', 'training-name', 'training-cost'];
   activeTrainingsArray: MatTableDataSource<TrainingElement>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -18,7 +18,7 @@ export class UserActiveTrainingsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<TrainingElement[]>('http://localhost:8080/api/trainings').subscribe( (elem) => {
+    this.http.get<TrainingElement[]>('http://localhost:8080/api/user-active-trainings').subscribe( (elem) => {
       this.activeTrainingsArray = new MatTableDataSource(elem);
       this.activeTrainingsArray.paginator = this.paginator;
     })
