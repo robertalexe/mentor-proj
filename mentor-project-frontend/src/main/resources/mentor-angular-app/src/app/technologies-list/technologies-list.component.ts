@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+
+export interface Technology {
+  techology: string
+}
 
 @Component({
   selector: 'app-technologies-list',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TechnologiesListComponent implements OnInit {
 
-  constructor() { }
+  technologiesArray: Array<Technology>;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get<Technology[]>('http://localhost:8080/api/technologies').subscribe( (elem) => {
+      this.technologiesArray = elem;
+    });
   }
 
 }

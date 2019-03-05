@@ -48,15 +48,15 @@ public class SdjUsers implements Users, UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = usersSdj.findById(new Email(username));
-        if(user.isPresent()) {
+        if(user.isPresent() && user.get().isActive()) {
             return new org.springframework.security.core.userdetails.User(user.get().getId().getValue(), user.get().getPassword().getPassword(), getAuthority());
         }
         Optional<Mentor> mentor = mentorsSdj.findById(new Email(username));
-        if(mentor.isPresent()) {
+        if(mentor.isPresent() && mentor.get().isActive()) {
             return new org.springframework.security.core.userdetails.User(mentor.get().getId().getValue(), mentor.get().getPassword().getPassword(), getAuthority());
         }
         Optional<Admin> admin = adminSdj.findById(new Email(username));
-        if(admin.isPresent()) {
+        if(admin.isPresent() && admin.get().isActive()) {
             return new org.springframework.security.core.userdetails.User(admin.get().getId().getValue(), admin.get().getPassword().getPassword(), getAuthority());
         }
         throw new UsernameNotFoundException("Username not found");

@@ -1,3 +1,9 @@
+<mat-selection-list #technologies>
+  <mat-list-option *ngFor="let tech of technologiesArray">
+    {{tech.value}}
+  </mat-list-option>
+</mat-selection-list>
+
 <p>
-  technologies-list works!
+  Technologies selected: {{technologies.selectedOptions.selected.length}}
 </p>

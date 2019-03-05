@@ -1,3 +1,104 @@
-<p>
-  signup-mentor works!
-</p>
+<div class="container">
+  <div class="page-header">
+    <h1>SignUp Form</h1>
+  </div>
+  <form (ngSubmit)="signUpMentor()" [formGroup]="mentorForm">
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" formControlName="email">
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+        <label for="inputContactNo">Contact Number</label>
+        <input type="text" class="form-control" id="inputContactNo" placeholder="Enter password" formControlName="contactNo">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Enter password" formControlName="password">
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+        <label for="inputLinkedinUrl">LinkedIn URL</label>
+        <input type="text" class="form-control" id="inputLinkedinUrl" placeholder="Enter LinkedIn URL" formControlName="linkedinUrl">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputFirstname">First Name</label>
+        <input type="text" class="form-control" id="inputFirstname" placeholder="Enter first name" formControlName="firstName">
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+        <label for="inputLastname">Last Name</label>
+        <input type="text" class="form-control" id="inputLastname" placeholder="Enter last name" formControlName="lastName">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputTimeZone">Timezone</label>
+          <select id="inputTimeZone" formControlName="timezone" class="form-control">
+            <option [value]="elem" *ngFor="let elem of timezonesArray">{{elem}}</option>
+          </select>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+        <label for="inputTechnologies">Technologies</label>
+        <select multiple id="inputTechnologies" formControlName="technologies" class="form-control">
+          <option [value]="elem.technology" *ngFor="let elem of technologiesArray">{{elem.technology}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputYearsOfExperience">Years of experience</label>
+        <input type="number" class="form-control" id="inputYearsOfExperience" placeholder="Enter years of experience" formControlName="yearsOfExperience">
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+      </div>
+    </div>
+    <div class="form-row">
+      <label>Select available time</label>
+      <mat-tab-group>
+        <mat-tab label="Monday">
+          <label for="monday-start-time">Start time: </label>
+          <input atp-time-picker value="19:00" id="monday-start-time" formControlName="startTimeMonday"/>
+          <label for="monday-end-time">End time: </label>
+          <input atp-time-picker value="19:00" id="monday-end-time" formControlName="endTimeMonday"/>
+        </mat-tab>
+        <mat-tab label="Tuesday">
+          <label for="tuesday-start-time">Start time: </label>
+          <input atp-time-picker value="19:00" id="tuesday-start-time" formControlName="startTimeTuesday"/>
+          <label for="tuesday-end-time">End time: </label>
+          <input atp-time-picker value="19:00" id="tuesday-end-time" formControlName="endTimeTuesday"/>
+        </mat-tab>
+        <mat-tab label="Wednesday">
+          <label for="wednesday-start-time">Start time: </label>
+          <input atp-time-picker value="19:00" id="wednesday-start-time" formControlName="startTimeWednesday"/>
+          <label for="wednesday-end-time">End time: </label>
+          <input atp-time-picker value="19:00" id="wednesday-end-time" formControlName="endTimeWednesday"/>
+        </mat-tab>
+        <mat-tab label="Thursday">
+          <label for="thursday-start-time">Start time: </label>
+          <input atp-time-picker value="19:00" id="thursday-start-time" formControlName="startTimeThursday"/>
+          <label for="thursday-end-time">End time: </label>
+          <input atp-time-picker value="19:00" id="thursday-end-time" formControlName="endTimeThursday"/>
+        </mat-tab>
+        <mat-tab label="Friday">
+          <label for="friday-start-time">Start time: </label>
+          <input atp-time-picker value="19:00" id="friday-start-time" formControlName="startTimeFriday"/>
+          <label for="friday-end-time">End time: </label>
+          <input atp-time-picker value="19:00" id="friday-end-time" formControlName="endTimeFriday"/>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary center-block">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UsersSdj extends JpaRepository<User, Email> {
 
+    User findByRegisteredCode(String code);
+
 }

@@ -12,3 +12,7 @@ INSERT INTO TRAININGS (ID, NAME, COST, MENTOR_ID) values  ('asdjkal-fdfs', 'Firs
 INSERT INTO TRAININGS (ID, NAME, COST, MENTOR_ID) values  ('asdjkal-fdfd', 'Second Training', 500, 'ABD@ABC.COM');
 
 INSERT INTO TRAINING_ENROLLED values ('asdjkal-fdfs', 'ABC@ABC.COM');
+
+INSERT INTO TECHNOLOGY values ('JAVA8');
+INSERT INTO TECHNOLOGY values ('ANGULAR7');
+INSERT INTO TECHNOLOGY values ('SQL');

@@ -2,12 +2,18 @@ package com.robert.mentor.exposition.training;
 
 import com.robert.mentor.application.mentor.FindAllMentors;
 import com.robert.mentor.application.training.FindAllTrainings;
+import com.robert.mentor.application.training.MentorProposedTrainings;
+import com.robert.mentor.application.training.ProposeTraining;
 import com.robert.mentor.application.user.UserActiveTrainings;
 import com.robert.mentor.domain.mentor.Mentor;
 import com.robert.mentor.domain.training.Training;
+import com.robert.mentor.domain.training.Trainings;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.spi.service.contexts.SecurityContext;
@@ -18,6 +24,7 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -28,6 +35,12 @@ public class TrainingResource {
     private FindAllMentors allMentors;
     @Autowired
     private UserActiveTrainings activeTrainings;
+    @Autowired
+    private ProposeTraining proposeTraining;
+    @Autowired
+    private MentorProposedTrainings mentorProposedTrainings;
+    @Autowired
+    private Trainings trainings;
 
     @RequestMapping(value = "/mentors-trainings", method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MentorTrainingRepresentation> allTrainings() {
@@ -43,5 +56,21 @@ public class TrainingResource {
         return trainings.stream()
                 .map(TrainingRepresentation::toTrainingRepresentation)
                 .collect(toList());
+    }
+
+    @RequestMapping(value = "/training/propose", method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> proposeTraining(@RequestBody ProposedTrainingRepresentation proposedTraining) {
+        proposeTraining.proposeTraining(proposedTraining.trainingName);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/training/mentor-proposed", method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MentorProposedTrainingRepresentation> proposedTrainingsForMentor() {
+        return mentorProposedTrainings.proposedTrainingsForMentor().stream()
+                .map( training ->
+                        new MentorProposedTrainingRepresentation(
+                                training.getId().getUserEmail().getValue(),
+                                trainings.findTrainingById(training.getId().getId()).orElseThrow(IllegalArgumentException::new).getTrainingName()))
+                .collect(Collectors.toList());
     }
 }

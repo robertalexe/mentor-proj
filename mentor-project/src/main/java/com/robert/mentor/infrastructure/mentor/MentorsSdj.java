@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MentorsSdj extends JpaRepository<Mentor, Email> {
+
+    Mentor findByRegisteredCode(String code);
 }

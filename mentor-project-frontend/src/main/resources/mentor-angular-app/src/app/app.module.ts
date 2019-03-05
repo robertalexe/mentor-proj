@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupUserComponent } from './signup-user/signup-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
@@ -32,6 +32,10 @@ import { MentorDetailsComponent } from './mentor-details/mentor-details.componen
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { TechnologiesListComponent } from './technologies-list/technologies-list.component';
 import { SignupMentorComponent } from './signup-mentor/signup-mentor.component';
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {MomentModule} from "ngx-moment";
+import {NgxMaterialTimepickerComponent} from "ngx-material-timepicker/src/app/material-timepicker/ngx-material-timepicker.component";
+import {AmazingTimePickerModule} from "amazing-time-picker";
 
 const appRoutes: Routes = [
   {
@@ -108,10 +112,12 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatDialogModule,
+    FormsModule,
+    AmazingTimePickerModule
   ],
   entryComponents: [
     DialogOverviewExampleDialog,
-    SnackbarProposalComponent
+    SnackbarProposalComponent,
   ],
   providers: [
     HttpClient,

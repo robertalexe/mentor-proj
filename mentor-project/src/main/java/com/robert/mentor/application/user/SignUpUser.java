@@ -20,7 +20,6 @@ public class SignUpUser {
 
     public String signUp(User user) throws Exception {
         user.setRegisteredCode(registrationCodeGenerator.generateSignUpCode());
-        user.setActive(true);
         verificationCodeSender.sendVerificationCodeTo(user);
         return users.signUp(user).getId().getValue();
     }

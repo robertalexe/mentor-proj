@@ -5,9 +5,8 @@ export class UserForm extends FormGroup {
 
     constructor(user?: User) {
         super( {
-            email: new FormControl(user? user.id : ''),
+            email: new FormControl(user? user.email : ''),
             contactNo: new FormControl(user? user.contactNumber:  ''),
-            username: new FormControl(user? user.userName : ''),
             password: new FormControl(user? user.password : ''),
             firstName: new FormControl(user? user.firstName : ''),
             lastName: new FormControl(user? user.lastName : '')

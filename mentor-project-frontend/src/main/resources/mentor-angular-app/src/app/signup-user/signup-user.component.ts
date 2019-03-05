@@ -26,8 +26,7 @@ export class SignupUserComponent implements OnInit {
   onSignUpUser() {
     if(this.userForm.valid) {
       this.user = new User();
-      this.user.id = this.userForm.value.email;
-      this.user.userName = this.userForm.value.username;
+      this.user.email = this.userForm.value.email;
       this.user.password = this.userForm.value.password;
       this.user.contactNumber = this.userForm.value.contactNo;
       this.user.firstName = this.userForm.value.firstName;

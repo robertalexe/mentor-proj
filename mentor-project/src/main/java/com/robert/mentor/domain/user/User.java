@@ -1,6 +1,7 @@
 package com.robert.mentor.domain.user;
 
 import com.robert.mentor.domain.*;
+import com.robert.mentor.domain.training.Training;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @DDD.AggregateRoot
 @Entity @Table(name = "APP_USERS")
@@ -36,6 +38,9 @@ public class User {
     private boolean active;
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    @Transient
+    private Set<Training> activeTrainings;
 
     public User(Email id, Password password, NameFragment firstName, NameFragment lastName, ContactNumber contactNumber, LocalDateTime registeredDate, String registeredCode, boolean active) {
         this.id = id;

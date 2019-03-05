@@ -25,6 +25,10 @@ export interface DialogData {
   name: string;
 }
 
+export class TrainingProposal {
+  trainingName: string;
+}
+
 @Component({
   selector: 'app-trainings-list',
   templateUrl: './trainings-list.component.html',
@@ -34,6 +38,7 @@ export class TrainingsListComponent implements OnInit {
 
   displayedColumns: string[] = ['mentor-name', 'technologies', 'training-name', 'training-cost', 'propose', 'showDetails'];
   trainingsArray: MatTableDataSource<TrainingElement>;
+  trainingProposal: TrainingProposal;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -60,10 +65,15 @@ export class TrainingsListComponent implements OnInit {
     console.log(element);
   }
 
-  snackbarProposed() {
-    this.snackbar.openFromComponent(SnackbarProposalComponent, {
-      duration: 3000,
-    });
+  snackbarProposed(element:TrainingElement) {
+    this.trainingProposal = new TrainingProposal();
+    this.trainingProposal.trainingName = element.trainingName;
+    this.http.post('http://localhost:8080/api/training/propose', this.trainingProposal).subscribe( (response) => {
+      this.snackbar.openFromComponent(SnackbarProposalComponent, {
+          duration: 3000,
+        });
+      }
+    );
   }
 
 }

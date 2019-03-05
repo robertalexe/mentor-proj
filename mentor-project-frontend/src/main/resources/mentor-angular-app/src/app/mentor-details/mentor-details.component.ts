@@ -25,7 +25,7 @@ export class MentorDetailsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Mentor>('http://localhost:8080/api/mentor-details').subscribe(
+    this.http.get<Mentor>('http://localhost:8080/api/mentor/mentor-details').subscribe(
       elem => { this.mentorDetails = elem }
     )
   }

@@ -28,7 +28,7 @@
 
     <ng-container matColumnDef="propose">
       <th mat-header-cell *matHeaderCellDef >Propose</th>
-      <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="snackbarProposed()">Propose Training</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-raised-button (click)="snackbarProposed(element)">Propose Training</button></td>
     </ng-container>
 
     <ng-container matColumnDef="showDetails">
