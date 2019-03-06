@@ -6,7 +6,6 @@ import com.robert.mentor.domain.mentor.Mentor;
 import com.robert.mentor.domain.mentor.Mentors;
 import com.robert.mentor.domain.mentor.WorkingHours;
 import com.robert.mentor.domain.mentor.WorkingTimes;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +28,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SdjMentorsLocalIT {
 
     @Autowired
-    private Mentors mentors;
+    private Mentors sut;
 
     @Test
     public void should_retrieve_existing_mentor() {
-        Mentor mentor = mentors.findOne(new Email("ABD@ABC.COM")).orElseThrow(() -> new UsernameNotFoundException("mentor"));
+        Mentor mentor = sut.findOne(new Email("ABD@ABC.COM")).orElseThrow(() -> new UsernameNotFoundException("mentor"));
         assertThat(mentor).isNotNull();
     }
 
@@ -44,7 +43,7 @@ public class SdjMentorsLocalIT {
                 LocalDateTime.now(), ZoneId.of("Europe/Berlin"), generateValidWorkingTimes(),
                 Collections.singleton(new Technology("Java8")), new Url("http://"),
                 2, emptyList());
-        Mentor mentor1 = mentors.signUp(mentor);
+        Mentor mentor1 = sut.signUp(mentor);
         assertThat(mentor1).isNotNull();
     }
 

@@ -27,7 +27,7 @@ import { MentorHomepageComponent } from './mentor-homepage/mentor-homepage.compo
 import {RoleGuard} from "./_guards/role.guard";
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UserActiveTrainingsComponent } from './user-active-trainings/user-active-trainings.component';
-import { MentorProposalsComponent } from './mentor-proposals/mentor-proposals.component';
+import {CourseAcceptedComponent, MentorProposalsComponent} from './mentor-proposals/mentor-proposals.component';
 import { MentorDetailsComponent } from './mentor-details/mentor-details.component';
 import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
 import { TechnologiesListComponent } from './technologies-list/technologies-list.component';
@@ -97,7 +97,8 @@ const appRoutes: Routes = [
     MentorDetailsComponent,
     AdminHomepageComponent,
     TechnologiesListComponent,
-    SignupMentorComponent
+    SignupMentorComponent,
+    CourseAcceptedComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -118,6 +119,7 @@ const appRoutes: Routes = [
   entryComponents: [
     DialogOverviewExampleDialog,
     SnackbarProposalComponent,
+    CourseAcceptedComponent
   ],
   providers: [
     HttpClient,

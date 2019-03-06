@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @DDD.AggregateRoot
@@ -38,8 +39,8 @@ public class User {
     private boolean active;
     @Enumerated(EnumType.STRING)
     private UserType userType;
-
-    @Transient
+    @ElementCollection
+    @CollectionTable(name = "ACTIVE_TRAININGS", joinColumns = @JoinColumn(name = "ID"))
     private Set<Training> activeTrainings;
 
     public User(Email id, Password password, NameFragment firstName, NameFragment lastName, ContactNumber contactNumber, LocalDateTime registeredDate, String registeredCode, boolean active) {
@@ -51,6 +52,7 @@ public class User {
         this.registeredDate = registeredDate;
         this.registeredCode = registeredCode;
         this.active = active;
+        this.activeTrainings = new HashSet<>();
     }
 
     public User(Email id, Password password, NameFragment firstName, NameFragment lastName, ContactNumber contactNumber, LocalDateTime registeredDate) {
@@ -91,5 +93,9 @@ public class User {
 
     public UserType getUserType() {
         return userType;
+    }
+
+    public void addActiveTraining(Training training) {
+        this.activeTrainings.add(training);
     }
 }

@@ -24,6 +24,6 @@ public class UserActiveTrainings {
 
     public Set<Training> userActiveTrainings() {
         Email currentUserEmail = identitySupplier.get();
-        return trainings.findTrainingsForUser(users.findOne(currentUserEmail));
+        return users.findOne(currentUserEmail).getActiveTrainings();
     }
 }

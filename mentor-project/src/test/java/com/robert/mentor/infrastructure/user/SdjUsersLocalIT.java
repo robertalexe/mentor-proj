@@ -7,7 +7,6 @@ import com.robert.mentor.domain.NameFragment;
 import com.robert.mentor.domain.Password;
 import com.robert.mentor.domain.user.User;
 import com.robert.mentor.domain.user.Users;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +22,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SdjUsersLocalIT {
 
     @Autowired
-    private Users users;
+    private Users sut;
 
     @Test
     public void should_retrieve_existing_user() {
-        User user = users.findOne(new Email("ABC@ABC.COM"));
+        User user = sut.findOne(new Email("ABC@ABC.COM"));
         assertThat(user).isNotNull();
     }
 

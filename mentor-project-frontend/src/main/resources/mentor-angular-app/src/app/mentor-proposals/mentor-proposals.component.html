@@ -1,1 +1,14 @@
 <mat-card>Training Proposals:</mat-card>
+<div class="container-fluid">
+<div *ngFor="let elem of trainingProposals">
+  <div class="row">
+    <div class="col-md-5">
+      <mat-card>{{elem.trainingName}} proposed by {{elem.userEmail}}</mat-card>
+    </div>
+    <div class="col-md-3">
+      <button mat-button (click)="acceptTraining(elem)">Propose</button>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>
+</div>

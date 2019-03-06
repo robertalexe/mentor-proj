@@ -12,4 +12,6 @@ import java.util.List;
 public interface TrainingProposalsSdj extends JpaRepository<TrainingProposal, TrainingProposalId> {
 
     List<TrainingProposal> findTrainingProposalsByMentorEmail(Email mentorEmail);
+
+    TrainingProposal findTrainingProposalById(TrainingProposalId id);
 }

@@ -1,10 +1,12 @@
 package com.robert.mentor.exposition.training;
 
 import com.robert.mentor.application.mentor.FindAllMentors;
+import com.robert.mentor.application.training.AcceptTraining;
 import com.robert.mentor.application.training.FindAllTrainings;
 import com.robert.mentor.application.training.MentorProposedTrainings;
 import com.robert.mentor.application.training.ProposeTraining;
 import com.robert.mentor.application.user.UserActiveTrainings;
+import com.robert.mentor.domain.Email;
 import com.robert.mentor.domain.mentor.Mentor;
 import com.robert.mentor.domain.training.Training;
 import com.robert.mentor.domain.training.Trainings;
@@ -41,6 +43,8 @@ public class TrainingResource {
     private MentorProposedTrainings mentorProposedTrainings;
     @Autowired
     private Trainings trainings;
+    @Autowired
+    private AcceptTraining acceptTraining;
 
     @RequestMapping(value = "/mentors-trainings", method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MentorTrainingRepresentation> allTrainings() {
@@ -72,5 +76,11 @@ public class TrainingResource {
                                 training.getId().getUserEmail().getValue(),
                                 trainings.findTrainingById(training.getId().getId()).orElseThrow(IllegalArgumentException::new).getTrainingName()))
                 .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/training/accept-training", method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> acceptTraining(@RequestBody MentorProposedTrainingRepresentation trainingRepresentation) {
+        acceptTraining.acceptTraining(new Email(trainingRepresentation.userEmail), trainingRepresentation.trainingName);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

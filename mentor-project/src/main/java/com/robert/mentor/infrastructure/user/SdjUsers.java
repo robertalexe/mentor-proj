@@ -4,6 +4,7 @@ import com.robert.mentor.domain.DDD;
 import com.robert.mentor.domain.Email;
 import com.robert.mentor.domain.admin.Admin;
 import com.robert.mentor.domain.mentor.Mentor;
+import com.robert.mentor.domain.training.Training;
 import com.robert.mentor.domain.user.User;
 import com.robert.mentor.domain.user.Users;
 import com.robert.mentor.infrastructure.admin.AdminSdj;
@@ -43,6 +44,12 @@ public class SdjUsers implements Users, UserDetailsService {
     @Override
     public User findOne(Email username) {
         return usersSdj.findById(username).orElseThrow(IllegalAccessError::new);
+    }
+
+    @Override
+    public void acceptedTraining(Email username, Training training) {
+        User user = usersSdj.findById(username).orElseThrow(() -> new UsernameNotFoundException("not found"));
+        user.addActiveTraining(training);
     }
 
     @Override

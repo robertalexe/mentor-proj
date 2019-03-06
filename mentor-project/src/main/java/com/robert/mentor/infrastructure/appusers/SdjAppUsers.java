@@ -23,6 +23,6 @@ public class SdjAppUsers implements AppUsers {
 
     @Override
     public Optional<AppUser> getUserByRegistrationCode(String code) {
-        return Optional.of(appUsers.findByRegisteredCode(code));
+        return Optional.ofNullable(appUsers.findByRegisteredCode(code));
     }
 }
