@@ -18,7 +18,7 @@ export class UserActiveTrainingsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<TrainingElement[]>('http://localhost:8080/api/user-active-trainings').subscribe( (elem) => {
+    this.http.get<TrainingElement[]>('/ui/api/user-active-trainings').subscribe( (elem) => {
       this.activeTrainingsArray = new MatTableDataSource(elem);
       this.activeTrainingsArray.paginator = this.paginator;
     })

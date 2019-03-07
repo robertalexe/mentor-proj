@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 export interface Technology {
-  techology: string
+  technology: string
 }
 
 @Component({
@@ -17,7 +17,7 @@ export class TechnologiesListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Technology[]>('http://localhost:8080/api/technologies').subscribe( (elem) => {
+    this.http.get<Technology[]>('/ui/api/technologies/all').subscribe( (elem) => {
       this.technologiesArray = elem;
     });
   }

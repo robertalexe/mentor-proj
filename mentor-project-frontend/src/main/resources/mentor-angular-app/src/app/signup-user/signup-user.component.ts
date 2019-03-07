@@ -31,7 +31,7 @@ export class SignupUserComponent implements OnInit {
       this.user.contactNumber = this.userForm.value.contactNo;
       this.user.firstName = this.userForm.value.firstName;
       this.user.lastName = this.userForm.value.lastName;
-      this.http.post('http://localhost:8080/api/user', this.user).subscribe( (response) => {
+      this.http.post('/ui/api/user', this.user).subscribe( (response) => {
         console.log(response);
       });
     }

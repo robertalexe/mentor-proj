@@ -71,9 +71,4 @@ public class Mentor extends User {
     public List<Training> getTrainings() {
         return trainings;
     }
-
-    public static void main(String[] args) {
-        ZoneId zoneId = ZoneId.of("America/Anchorage");
-        System.out.println(zoneId.toString());
-    }
 }

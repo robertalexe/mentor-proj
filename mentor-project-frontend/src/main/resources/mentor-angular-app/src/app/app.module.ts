@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupUserComponent } from './signup-user/signup-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -16,7 +15,6 @@ import {
 } from './trainings-list/trainings-list.component';
 import {MatDialogModule, MatNativeDateModule} from "@angular/material";
 import {AngularMaterialModule} from "./angular-material/angular-material.module";
-import { HomepageComponent } from './homepage/homepage.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { LoginComponent } from './login/login.component';
 import {JwtInterceptor} from './_helper/jwt.interceptor';
@@ -85,7 +83,6 @@ const appRoutes: Routes = [
     SignupUserComponent,
     TrainingsListComponent,
     DialogOverviewExampleDialog,
-    HomepageComponent,
     UsersListComponent,
     LoginComponent,
     UserHomepageComponent,

@@ -20,13 +20,13 @@ export class MentorProposalsComponent implements OnInit {
   constructor(private http: HttpClient, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.http.get<MentorProposedTraining[]>('http://localhost:8080/api/training/mentor-proposed').subscribe( (resp) => {
+    this.http.get<MentorProposedTraining[]>('/ui/api/training/mentor-proposed').subscribe( (resp) => {
       this.trainingProposals = resp;
     });
   }
 
   public acceptTraining(elem: MentorProposedTraining) {
-    this.http.post('http://localhost:8080/api/training/accept-training', elem).subscribe( (resp) => {
+    this.http.post('/ui/api/training/accept-training', elem).subscribe( (resp) => {
       this.snackbar.openFromComponent(CourseAcceptedComponent, {
         duration: 3000,
       });

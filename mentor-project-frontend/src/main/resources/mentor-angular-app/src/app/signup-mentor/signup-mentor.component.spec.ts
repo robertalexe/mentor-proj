@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupMentorComponent } from './signup-mentor.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
+import {Directive} from "@angular/core";
 
 describe('SignupMentorComponent', () => {
   let component: SignupMentorComponent;
@@ -8,7 +12,9 @@ describe('SignupMentorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupMentorComponent ]
+      declarations: [ SignupMentorComponent, MockMatTabGroupDirective,
+        MockMatToolbarDirective, MockMatTabDirective, MockMatCardDirective ],
+      imports: [ ReactiveFormsModule, RouterModule.forRoot([]), HttpClientModule ]
     })
     .compileComponents();
   }));
@@ -23,3 +29,27 @@ describe('SignupMentorComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Directive({
+  selector: 'mat-tab-group'
+})
+class MockMatTabGroupDirective {
+}
+
+@Directive({
+  selector: 'mat-tab'
+})
+class MockMatTabDirective {
+}
+
+@Directive({
+  selector: 'mat-divider'
+})
+class MockMatToolbarDirective {
+}
+
+@Directive({
+  selector: 'mat-card'
+})
+class MockMatCardDirective {
+}

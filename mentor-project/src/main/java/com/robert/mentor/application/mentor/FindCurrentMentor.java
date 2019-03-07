@@ -9,14 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
+
 @DDD.ApplicationService
 @Service
 public class FindCurrentMentor {
 
-    @Autowired
     private IdentitySupplier identitySupplier;
-    @Autowired
     private Mentors mentors;
+
+    public FindCurrentMentor(IdentitySupplier identitySupplier, Mentors mentors) {
+        this.identitySupplier = requireNonNull(identitySupplier);
+        this.mentors = requireNonNull(mentors);
+    }
 
     public Mentor findCurrentMentor() {
         Email email = identitySupplier.get();

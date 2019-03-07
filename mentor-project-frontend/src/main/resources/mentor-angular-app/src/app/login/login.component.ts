@@ -62,8 +62,10 @@ export class LoginComponent implements OnInit {
           if(data.userType === 'ADMIN') {
             this.router.navigate(['/admin-homepage'])
           }
+          //this.router.navigate(['/forbidden'])
         },
         error => {
+          this.router.navigate(['/forbidden'])
           this.error = error;
           this.loading = false;
         });

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminHomepageComponent } from './admin-homepage.component';
+import {Directive} from "@angular/core";
+import {MatTab, MatTabBody, MatTabGroup, MatTabHeader} from "@angular/material";
 
 describe('AdminHomepageComponent', () => {
   let component: AdminHomepageComponent;
@@ -8,7 +10,12 @@ describe('AdminHomepageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminHomepageComponent ]
+      declarations: [ AdminHomepageComponent,
+        MockAppTTechnologiesListDirective,
+        MockAppUsersListDirective,
+        MockMatTabGroupDirective,
+        MockMatTabDirective,
+        MockMatToolbarDirective]
     })
     .compileComponents();
   }));
@@ -23,3 +30,33 @@ describe('AdminHomepageComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Directive({
+  selector: 'app-technologies-list'
+})
+class MockAppTTechnologiesListDirective {
+}
+
+@Directive({
+  selector: 'app-users-list'
+})
+class MockAppUsersListDirective {
+}
+
+@Directive({
+  selector: 'mat-tab-group'
+})
+class MockMatTabGroupDirective {
+}
+
+@Directive({
+  selector: 'mat-tab'
+})
+class MockMatTabDirective {
+}
+
+@Directive({
+  selector: 'mat-toolbar'
+})
+class MockMatToolbarDirective {
+}

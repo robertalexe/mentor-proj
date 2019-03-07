@@ -6,9 +6,9 @@ export interface Mentor {
   firstName: string,
   lastName: string,
   contactNumber: string,
-  timeZone: string,
-  technologiesList: string,
-  linkedInUrl: string,
+  timezone: string,
+  technologies: string[],
+  linkedinUrl: string,
   yearsOfExperience: number
 }
 
@@ -25,7 +25,7 @@ export class MentorDetailsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Mentor>('http://localhost:8080/api/mentor/mentor-details').subscribe(
+    this.http.get<Mentor>('/ui/api/mentor/mentor-details').subscribe(
       elem => { this.mentorDetails = elem }
     )
   }

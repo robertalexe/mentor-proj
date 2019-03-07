@@ -46,7 +46,7 @@ export class TrainingsListComponent implements OnInit {
   constructor(private http: HttpClient, private dialog: MatDialog, private snackbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.http.get<TrainingElement[]>('http://localhost:8080/api/mentors-trainings').subscribe( (elem) => {
+    this.http.get<TrainingElement[]>('/ui/api/mentors-trainings').subscribe( (elem) => {
       this.trainingsArray = new MatTableDataSource(elem);
       this.trainingsArray.paginator = this.paginator;
       this.trainingsArray.sort = this.sort;
@@ -68,7 +68,7 @@ export class TrainingsListComponent implements OnInit {
   snackbarProposed(element:TrainingElement) {
     this.trainingProposal = new TrainingProposal();
     this.trainingProposal.trainingName = element.trainingName;
-    this.http.post('http://localhost:8080/api/training/propose', this.trainingProposal).subscribe( (response) => {
+    this.http.post('/ui/api/training/propose', this.trainingProposal).subscribe( (response) => {
       this.snackbar.openFromComponent(SnackbarProposalComponent, {
           duration: 3000,
         });

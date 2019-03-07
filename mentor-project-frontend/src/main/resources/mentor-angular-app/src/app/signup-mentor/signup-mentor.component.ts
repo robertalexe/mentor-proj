@@ -18,10 +18,10 @@ export class SignupMentorComponent implements OnInit {
   mentor: Mentor;
 
   ngOnInit() {
-    this.http.get<string[]>('http://localhost:8080/api/timezones/all').subscribe( (elem) => {
+    this.http.get<string[]>('/ui/api/timezones/all').subscribe( (elem) => {
       this.timezonesArray = elem;
     });
-    this.http.get<Technology[]>('http://localhost:8080/api/technologies/all').subscribe( (elem) => {
+    this.http.get<Technology[]>('/ui/api/technologies/all').subscribe( (elem) => {
       this.technologiesArray = elem;
     });
   }
@@ -54,7 +54,7 @@ export class SignupMentorComponent implements OnInit {
       });
       console.log(this.mentorForm);
       console.log(this.mentor);
-      this.http.post('http://localhost:8080/api/mentor', this.mentor).subscribe( (response) => {
+      this.http.post('/ui/api/mentor', this.mentor).subscribe( (response) => {
         console.log(response);
       });
     }
