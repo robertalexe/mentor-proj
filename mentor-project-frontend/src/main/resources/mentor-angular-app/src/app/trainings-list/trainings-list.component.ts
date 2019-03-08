@@ -59,7 +59,7 @@ export class TrainingsListComponent implements OnInit {
 
   openTrainingDetails(element: any): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '500px',
       data: {actualTraining: element}
     });
     console.log(element);
